@@ -1,0 +1,84 @@
+[server]
+hostname = "{{ hostname }}"
+node_ip = "127.0.0.1"
+server_role = "api-key-manager"
+offset = "{{ ports_offset }}"
+
+#[transport.https.properties]
+#proxyPort = 443
+
+[user_store]
+type = "database_unique_id"
+
+[super_admin]
+username = "{{ admin_username }}"
+password = "{{ admin_password }}"
+create_admin_account = true
+
+[database.apim_db]
+type = "{{ wso2am_db_type }}"
+url = "{{ wso2am_db_url }}"
+username = "{{ wso2am_db_username }}"
+password = "{{ wso2am_db_password }}"
+
+[database.shared_db]
+type = "{{ wso2shared_db_type }}"
+url = "{{ wso2shared_db_url }}"
+username = "{{ wso2shared_db_username }}"
+password = "{{ wso2shared_db_password }}"
+
+[keystore.tls]
+file_name =  "{{ key_store_location }}"
+type =  "JKS"
+password =  "{{ key_store_password }}"
+alias =  "{{ key_store_key_alias }}"
+key_password =  "{{ key_store_key_password }}"
+
+[truststore]
+file_name = "{{ trust_store_location }}"
+type = "JKS"
+password = "{{ trust_store_password }}"
+
+# Caches
+[apim.cache.km_token]
+enable = false
+expiry_time = 15
+
+[apim.cache.jwt_claim]
+enable = true
+expiry_time = 900
+
+# JWT Generation
+[apim.jwt]
+enable = {{ jwt_enable }}
+encoding = "{{ jwt_encoding }}" # base64,base64url
+#generator_impl = "org.wso2.carbon.apimgt.keymgt.token.JWTGenerator"
+claim_dialect = "{{ jwt_claim_dialect }}"
+header = "X-JWT-Assertion"
+signing_algorithm = "{{ jwt_signing_algorithm }}"
+#enable_user_claims = true
+#claims_extractor_impl = "org.wso2.carbon.apimgt.impl.token.DefaultClaimsRetriever"
+
+[apim.throttling]
+{% for url_group in throttling_url_group %}
+[[apim.throttling.url_group]]
+traffic_manager_urls=[{% for url in url_group['traffic_manager_urls'] %}"{{ url }}"{%- if not loop.last -%},{% endif %}{% endfor %}]
+traffic_manager_auth_urls=[{% for url in url_group['traffic_manager_auth_urls'] %}"{{ url }}"{%- if not loop.last -%},{% endif %}{% endfor %}]
+
+{% endfor %}
+
+[[event_handler]]
+name="userPostSelfRegistration"
+subscriptions=["POST_ADD_USER"]
+
+[apim.event_hub]
+service_url = "https://tm.apim.com:9443"
+event_listening_endpoints = ["tcp://tm.apim.com:5672"]
+
+[[apim.event_hub.publish.url_group]]
+urls = ["tcp://tm.apim.com:9611"]
+auth_urls = ["ssl://tm.apim.com:9711"]
+type = "loadbalance"
+
+[oauth.oidc.id_token]
+issuer = "https://apim.am.wso2.com/oauth2/token"

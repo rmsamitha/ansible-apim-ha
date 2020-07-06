@@ -1,0 +1,50 @@
+[server]
+hostname = "{{ hostname }}"
+node_ip = "127.0.0.1"
+server_role = "traffic-manager"
+offset = "{{ ports_offset }}"
+
+[user_store]
+type = "database_unique_id"
+
+[super_admin]
+username = "{{ admin_username }}"
+password = "{{ admin_password }}"
+create_admin_account = true
+
+[database.apim_db]
+type = "{{ wso2am_db_type }}"
+url = "{{ wso2am_db_url }}"
+username = "{{ wso2am_db_username }}"
+password = "{{ wso2am_db_password }}"
+
+[database.shared_db]
+type = "{{ wso2shared_db_type }}"
+url = "{{ wso2shared_db_url }}"
+username = "{{ wso2shared_db_username }}"
+password = "{{ wso2shared_db_password }}"
+
+[keystore.tls]
+file_name =  "{{ key_store_location }}"
+type =  "JKS"
+password =  "{{ key_store_password }}"
+alias =  "{{ key_store_key_alias }}"
+key_password =  "{{ key_store_key_password }}"
+
+[truststore]
+file_name = "{{ trust_store_location }}"
+type = "JKS"
+password = "wso2carbon"
+
+# key manager implementation
+[apim.key_manager]
+service_url = "{{ key_manager_server_url }}"
+username= "$ref{super_admin.username}"
+
+[apim.oauth_config]
+revoke_endpoint = "{{ oauth_configs_revoke_api_url }}"
+enable_token_encryption = false
+enable_token_hashing = false
+
+[oauth.oidc.id_token]
+issuer = "https://apim.am.wso2.com/oauth2/token"
