@@ -1,0 +1,21 @@
+127.0.0.1 localhost
+
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+
+192.168.114.4	apis.apim.com
+192.168.114.4	portals.apim.com
+192.168.114.4	db.apim.com
+192.168.114.4	tm.apim.com
+192.168.114.25	km.apim.com
+192.168.114.40	pub.apim.com
+192.168.114.49	dev.apim.com
+192.168.114.49	bps.apim.com
+192.168.114.54	gw.apim.com
+192.168.114.62	analytics.apim.com
+192.168.114.67	worker.apim.com
