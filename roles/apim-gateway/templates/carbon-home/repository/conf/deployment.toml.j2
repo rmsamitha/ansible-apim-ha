@@ -86,6 +86,11 @@ allow_methods = ["GET","PUT","POST","DELETE","PATCH","OPTIONS"]
 allow_headers = ["authorization","Access-Control-Allow-Origin","Content-Type","SOAPAction","apikey"]
 allow_credentials = false
 
+[apim.key_manager]
+service_url = "{{ key_manager_server_url }}"
+username= "$ref{super_admin.username}"
+password= "$ref{super_admin.password}"
+
 [apim.event_hub]
 service_url = "https://tm.apim.com:9443"
 event_listening_endpoints = ["tcp://tm.apim.com:5672"]

@@ -101,6 +101,11 @@ apply_for_all_tenants = false
 name="userPostSelfRegistration"
 subscriptions=["POST_ADD_USER"]
 
+[apim.key_manager]
+service_url = "{{ key_manager_server_url }}"
+username= "$ref{super_admin.username}"
+password= "$ref{super_admin.password}"
+
 [apim.event_hub]
 service_url = "https://tm.apim.com:9443"
 event_listening_endpoints = ["tcp://tm.apim.com:5672"]

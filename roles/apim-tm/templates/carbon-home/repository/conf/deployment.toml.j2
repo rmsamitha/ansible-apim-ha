@@ -40,6 +40,7 @@ password = "wso2carbon"
 [apim.key_manager]
 service_url = "{{ key_manager_server_url }}"
 username= "$ref{super_admin.username}"
+password= "$ref{super_admin.password}"
 
 [apim.oauth_config]
 revoke_endpoint = "{{ oauth_configs_revoke_api_url }}"
