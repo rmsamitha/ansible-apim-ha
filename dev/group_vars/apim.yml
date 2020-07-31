@@ -118,9 +118,9 @@ throttle_decision_endpoints:
   - tcp://tm1.apimha.com:5683
 throttling_url_group:
   - traffic_manager_urls:
-      - tcp://tm1.apimha.com:9611
+      - tcp://tm1.apimha.com:9622
     traffic_manager_auth_urls:
-      - ssl://tm1.apimha.com:9711
+      - ssl://tm1.apimha.com:9722
 # Workflow configurations
 workflow_enable: "false"
 workflow_service_url: https://localhost:9445/bpmn
