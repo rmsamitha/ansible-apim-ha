@@ -11,6 +11,9 @@ ff02::3 ip6-allhosts
 18.191.197.52	db.apimha.com
 18.191.197.52	portals.apimha.com
 18.191.197.52	apis.apimha.com
+18.191.197.52	tmlb.apimha.com
+18.191.197.52	kmlb.apimha.com
+18.191.197.52	gwlb.apimha.com
 
 
 18.191.197.52   tm1.apimha.com

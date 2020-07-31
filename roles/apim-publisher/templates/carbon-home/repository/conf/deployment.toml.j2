@@ -124,11 +124,11 @@ username= "$ref{super_admin.username}"
 password= "$ref{super_admin.password}"
 
 [apim.event_hub]
-service_url = "{{ throttle_config_policy_deployer_url }}"
-event_listening_endpoints = [{% for endpoint in throttle_decision_endpoints %}"{{ endpoint }}"{%- if not loop.last -%},{% endif %}{% endfor %}]
+service_url = "{{ eventhub_service_url }}"
+event_listening_endpoints = [{% for endpoint in eventhub_decision_endpoints %}"{{ endpoint }}"{%- if not loop.last -%},{% endif %}{% endfor %}]
 
-{% for url_group in throttling_url_group %}
+{% for url_group in eventhub_url_group %}
 [[apim.event_hub.publish.url_group]]
-traffic_manager_urls=[{% for url in url_group['traffic_manager_urls'] %}"{{ url }}"{%- if not loop.last -%},{% endif %}{% endfor %}]
-traffic_manager_auth_urls=[{% for url in url_group['traffic_manager_auth_urls'] %}"{{ url }}"{%- if not loop.last -%},{% endif %}{% endfor %}]
+urls=[{% for url in url_group['urls'] %}"{{ url }}"{%- if not loop.last -%},{% endif %}{% endfor %}]
+auth_urls=[{% for url in url_group['auth_urls'] %}"{{ url }}"{%- if not loop.last -%},{% endif %}{% endfor %}]
 {% endfor %}
