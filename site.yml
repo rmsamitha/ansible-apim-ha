@@ -30,34 +30,34 @@
   roles:
     - apim-analytics
 
-#- name: Apply API Manager default configuration to an KM node
-#  hosts:
-#    - apim-km_1
-#  roles:
-#    - apim-km
-#
-#- name: Apply API Manager default configuration to an TM node
-#  hosts:
-#    - apim-tm_1
-#  roles:
-#    - apim-tm
-#
-#- name: Apply API Manager default configuration to an Publisher node
-#  hosts:
-#    - apim-publisher_1
-#  roles:
-#    - apim-publisher
-#
-#- name: Apply API Manager default configuration to an Publisher node
-#  hosts:
-#    - apim-devportal_1
-#  roles:
-#    - apim-devportal
-#
-#- name: Apply API Manager default configuration to an Publisher node
-#  hosts:
-#    - apim-gateway_1
-#  roles:
-#    - apim-gateway
-#
-#
+- name: Apply API Manager default configuration to an KM node
+  hosts:
+    - apim-km_1
+  roles:
+    - apim-km
+
+- name: Apply API Manager default configuration to an TM node
+  hosts:
+    - apim-tm_1
+  roles:
+    - apim-tm
+
+- name: Apply API Manager default configuration to an Publisher node
+  hosts:
+    - apim-publisher_1
+  roles:
+    - apim-publisher
+
+- name: Apply API Manager default configuration to an Publisher node
+  hosts:
+    - apim-devportal_1
+  roles:
+    - apim-devportal
+
+- name: Apply API Manager default configuration to an Publisher node
+  hosts:
+    - apim-gateway_1
+  roles:
+    - apim-gateway
+
+

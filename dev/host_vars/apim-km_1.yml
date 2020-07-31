@@ -17,8 +17,8 @@
 # NOTE: The parameterized values has the default values from the original pack. Please change them according to your
 # requirements. If you need to add additional configurations, please use the custom.yml under each role.
 
-hostname: km.apim.com
-ports_offset: 0
+hostname: km1.apimha.com
+ports_offset: 10
 
 # User manager configurations
 admin_username: admin
