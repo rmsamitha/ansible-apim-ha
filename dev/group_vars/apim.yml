@@ -95,14 +95,14 @@ key_manager_server_url: https://kmlb.apimha.com/services/
 # API Store related configurations
 api_devportal_url: https://portals.apimha.com/devportal
 api_devportal_server_url: https://dev.apimha.com/services/
-oauth_configs_revoke_api_url: https://km.apimha.com/oauth2/revoke
+oauth_configs_revoke_api_url: https://kmlb.apimha.com/oauth2/revoke
 
 # Gateway configurations
 gateway_environments:
   - { type: 'hybrid',
       name: 'Production and Sandbox',
       description: 'This is a hybrid gateway that handles both production and sandbox token traffic.',
-      service_url: 'https://gw.apimha.com/services/',
+      service_url: 'https://gwlb.apimha.com/services/',
       ws_endpoint: 'ws://gw1.apimha.com:9099',
       wss_endpoint: 'wss://gw1.apimha.com:8099',
       http_endpoint: 'http://apis.apimha.com',
