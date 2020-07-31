@@ -61,16 +61,16 @@ java_dir: /opt
 java_symlink: "/usr/bin/java"
 java_home: "{{ java_dir }}/{{ jdk_name }}"
 
-api_publisher_url: https://portals.apim.com
-dev_portal_url: https://portals.apim.com
-auth_base_url: https://portals.apim.com
-auth_dcr_base_url: https://portals.apim.com
+api_publisher_url: https://portals.apimha.com
+dev_portal_url: https://portals.apimha.com
+auth_base_url: https://portals.apimha.com
+auth_dcr_base_url: https://portals.apimha.com
 admin_service_username: admin
 admin_service_password: admin
 keymanager_username: admin
 keymanager_password: admin
-baseUrl: https://portals.apim.com
-externalLogoutUrl: https://portals.apim.com/oidc/logout
+baseUrl: https://portals.apimha.com
+externalLogoutUrl: https://portals.apimha.com/oidc/logout
 
 # Database configurations
 wso2_metrics_db_url: jdbc:h2:${sys:carbon.home}/wso2/dashboard/database/metrics;AUTO_SERVER=TRUE
@@ -79,13 +79,13 @@ wso2_metrics_db_password: wso2carbon
 wso2_metrics_db_driver: org.h2.Driver
 wso2_metrics_db_test_query: SELECT 1
 
-dashboard_db_url: jdbc:mysql://db.apim.com:3306/DASHBOARD_DB?useSSL=false
+dashboard_db_url: jdbc:mysql://db.apimha.com:3306/DASHBOARD_DB?useSSL=false
 dashboard_db_username: amuser
 dashboard_db_password: Pass@123
 dashboard_db_driver: com.mysql.jdbc.Driver
 dashboard_db_test_query: SELECT 1
 
-wso2_permissions_db_url: jdbc:mysql://db.apim.com:3306/PERMISSION_DB?useSSL=false
+wso2_permissions_db_url: jdbc:mysql://db.apimha.com:3306/PERMISSION_DB?useSSL=false
 wso2_permissions_db_username: amuser
 wso2_permissions_db_password: Pass@123
 wso2_permissions_db_driver: com.mysql.jdbc.Driver
@@ -97,7 +97,7 @@ message_tracing_db_password: wso2carbon
 message_tracing_db_driver: org.h2.Driver
 message_tracing_db_test_query: SELECT 1
 
-apim_analytics_db_url: jdbc:mysql://db.apim.com:3306/APIM_ANALYTICS_DB?useSSL=false
+apim_analytics_db_url: jdbc:mysql://db.apimha.com:3306/APIM_ANALYTICS_DB?useSSL=false
 apim_analytics_db_username: amuser
 apim_analytics_db_password: Pass@123
 apim_analytics_db_driver: com.mysql.jdbc.Driver
@@ -109,13 +109,13 @@ wso2am_mgw_analytics_db_password: wso2carbon
 wso2am_mgw_analytics_db_driver: org.h2.Driver
 wso2am_mgw_analytics_db_test_query: SELECT 1
 
-cluster_db_url: jdbc:mysql://db.apim.com:3306/WSO2_CLUSTER_DB?useSSL=false
+cluster_db_url: jdbc:mysql://db.apimha.com:3306/WSO2_CLUSTER_DB?useSSL=false
 cluster_db_username: amuser
 cluster_db_password: Pass@123
 cluster_db_driver: com.mysql.jdbc.Driver
 cluster_db_test_query: SELECT 1
 
-persistence_db_url: jdbc:mysql://db.apim.com:3306/PERSISTENCE_DB?useSSL=false
+persistence_db_url: jdbc:mysql://db.apimha.com:3306/PERSISTENCE_DB?useSSL=false
 persistence_db_username: amuser
 persistence_db_password: Pass@123
 persistence_db_driver: com.mysql.jdbc.Driver
@@ -127,7 +127,7 @@ business_rules_db_password: wso2carbon
 business_rules_db_driver: org.h2.Driver
 business_rules_db_test_query: SELECT 1
 
-am_db_url: jdbc:mysql://db.apim.com:3306/amdb?useSSL=false
+am_db_url: jdbc:mysql://db.apimha.com:3306/amdb?useSSL=false
 am_db_username: amuser
 am_db_password: Pass@123
 am_db_driver: com.mysql.jdbc.Driver

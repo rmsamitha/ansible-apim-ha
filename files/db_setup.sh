@@ -13,15 +13,18 @@ mysql -uamuser -pPass@123 -h$3<<EOF
 	create database amdb;
 	use amdb;
 	source $apimHome/dbscripts/apimgt/mysql.sql;
+    SET GLOBAL max_connections = 500;
 
 	drop database if exists sharedDB;
 	create database sharedDB;
 	use sharedDB;
 	source $apimHome/dbscripts/mysql.sql;
-
+    SET GLOBAL max_connections = 500;
 
 	drop database if exists APIM_ANALYTICS_DB;
 	create database APIM_ANALYTICS_DB;
+    use APIM_ANALYTICS_DB;
+    SET GLOBAL max_connections = 500;
 
     drop database if exists DASHBOARD_DB;
 	create database DASHBOARD_DB;
