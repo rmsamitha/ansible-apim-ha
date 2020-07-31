@@ -1,4 +1,4 @@
-#----------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
 #  Copyright (c) 2018 WSO2, Inc. http://www.wso2.org
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,18 +12,22 @@
 #  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
-#----------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
 ---
 # NOTE: The parameterized values has the default values from the original pack. Please change them according to your
 # requirements. If you need to add additional configurations, please use the custom.yml under each role.
 
-hostname: localhost
-ports_offset: 0
+hostname: portals.apimha.com
+ports_offset: 12
 
-# Auth Manager configurations
+# User manager configurations
 admin_username: admin
 admin_password: admin
 
-# Clustering configurations
-local_member_host: 127.0.0.1
-local_member_port: 4000
+config_files:
+  - { src: 'carbon-home/repository/conf/deployment.toml.j2',
+      dest: '{{ carbon_home }}/repository/conf/deployment.toml' }
+  - { src: 'carbon-home/bin/wso2server.sh.j2',
+      dest: '{{ carbon_home }}/bin/wso2server.sh' }
+  - { src: 'carbon-home/repository/deployment/server/jaggeryapps/admin/site/conf/site.json.j2',
+      dest: '{{ carbon_home }}/repository/deployment/server/jaggeryapps/admin/site/conf/site.json' }

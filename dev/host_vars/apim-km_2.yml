@@ -1,4 +1,4 @@
-#----------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
 #  Copyright (c) 2018 WSO2, Inc. http://www.wso2.org
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,23 +12,24 @@
 #  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
-#----------------------------------------------------------------------------
-
+# ----------------------------------------------------------------------------
 ---
 # NOTE: The parameterized values has the default values from the original pack. Please change them according to your
 # requirements. If you need to add additional configurations, please use the custom.yml under each role.
 
-hostname: localhost
-ports_offset: 0
+hostname: km2.apimha.com
+ports_offset: 10
 
 # User manager configurations
 admin_username: admin
 admin_password: admin
 
-# api-manager.xml configs
-oauth_configs_revoke_api_url: https://localhost:${https.nio.port}/revoke
+# JWT Generation
+jwt_enable: "true"
+jwt_encoding: base64
+jwt_claim_dialect: "http://wso2.org/claims"
+jwt_signing_algorithm: SHA256withRSA
 
-# List of configuration file templates, and the paths they should be written to
 config_files:
   - { src: 'carbon-home/repository/conf/deployment.toml.j2',
       dest: '{{ carbon_home }}/repository/conf/deployment.toml' }

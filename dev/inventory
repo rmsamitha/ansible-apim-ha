@@ -14,7 +14,6 @@ apim-gateway_2 ansible_host=gw2.apimha.com ansible_user=ubuntu ansible_ssh_priva
 node_1 ansible_host=node1.apimha.com ansible_user=ubuntu ansible_ssh_private_key_file=files/keys/APIM-HA-83.pem
 node_2 ansible_host=node2.apimha.com ansible_user=ubuntu ansible_ssh_private_key_file=files/keys/APIM-HA-83.pem
 
-
 [apim-analytics]
 apim-analytics_1 ansible_host=analytics1.apimha.com ansible_user=ubuntu ansible_ssh_private_key_file=files/keys/APIM-HA-83.pem
 apim-analytics_2 ansible_host=analytics2.apimha.com ansible_user=ubuntu ansible_ssh_private_key_file=files/keys/APIM-HA-83.pem
