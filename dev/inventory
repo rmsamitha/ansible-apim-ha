@@ -1,10 +1,13 @@
 [apim]
-apim-tm_1 ansible_host=tm.apim.com ansible_user=ubuntu ansible_ssh_private_key_file=files/keys/apim310.key
-apim-km_1 ansible_host=km.apim.com ansible_user=ubuntu ansible_ssh_private_key_file=files/keys/apim310.key
-apim-publisher_1 ansible_host=pub.apim.com ansible_user=ubuntu ansible_ssh_private_key_file=files/keys/apim310.key
-apim-devportal_1 ansible_host=dev.apim.com ansible_user=ubuntu ansible_ssh_private_key_file=files/keys/apim310.key
-apim-gateway_1 ansible_host=gw.apim.com ansible_user=ubuntu ansible_ssh_private_key_file=files/keys/apim310.key
+apim-tm_1 ansible_host=tm.apimha.com ansible_user=ubuntu ansible_ssh_private_key_file=files/keys/APIM-HA-83.pem
+apim-km_1 ansible_host=km.apimha.com ansible_user=ubuntu ansible_ssh_private_key_file=files/keys/APIM-HA-83.pem
+apim-publisher_1 ansible_host=pub.apimha.com ansible_user=ubuntu ansible_ssh_private_key_file=files/keys/APIM-HA-83.pem
+apim-devportal_1 ansible_host=dev.apimha.com ansible_user=ubuntu ansible_ssh_private_key_file=files/keys/APIM-HA-83.pem
+apim-gateway_1 ansible_host=gw.apimha.com ansible_user=ubuntu ansible_ssh_private_key_file=files/keys/APIM-HA-83.pem
+node_1 ansible_host=node1.apimha.com ansible_user=ubuntu ansible_ssh_private_key_file=files/keys/APIM-HA-83.pem
+node_2 ansible_host=node2.apimha.com ansible_user=ubuntu ansible_ssh_private_key_file=files/keys/APIM-HA-83.pem
+
 
 [apim-analytics]
-apim-analytics_1 ansible_host=analytics.apim.com ansible_user=ubuntu ansible_ssh_private_key_file=files/keys/apim310.key
+apim-analytics_1 ansible_host=analytics.apimha.com ansible_user=ubuntu ansible_ssh_private_key_file=files/keys/APIM-HA-83.pem
 
