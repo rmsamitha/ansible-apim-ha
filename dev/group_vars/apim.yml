@@ -77,16 +77,16 @@ deployment_mode: single # Single or HA
 analytics_enabled: true
 stream_processor_username: ${admin.username}
 stream_processor_password: ${admin.password}
-stream_processor_rest_api_url: https://analytics1.apimha.com:7444
+stream_processor_rest_api_url: https://analytics.apimha.com:7444
 stream_processor_rest_api_username: ${admin.username}
 stream_processor_rest_api_password: ${admin.password}
 analytics_url_group:
   - analytics_urls:
       - tcp://analytics1.apimha.com:7612
-#      - tcp://worker.apimha.com:7612
+#      - tcp://analytics2.apimha.com:7612
     analytics_auth_urls:
       - ssl://analytics1.apimha.com:7712
-#      - ssl://worker.apimha.com:7712
+#      - ssl://analytics2.apimha.com:7712
 
 # Server URL of the Authentication service. Make sure to import the Key Manager's public certificate to WSO2 API-M's
 # client-truststore.jks. For more information, see https://docs.wso2.com/display/ADMIN44x/Creating+New+Keystores

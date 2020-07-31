@@ -1,15 +1,9 @@
-#http {
-    map $http_upgrade $connection_upgrade {
-        default upgrade;
-        '' close;
-    }
-#}
-
 server {
-        listen portals.apim.com:443 ssl;
+        listen *:443 ssl;
+        listen [::]:443 ssl;
 
-        ssl_certificate     /home/ubuntu/keys/wso2carbon.crt;
-        ssl_certificate_key /home/ubuntu/keys/wso2carbon.key;
+        ssl_certificate     /home/ubuntu/ansible-apim/files/security/wso2am/wso2carbon.crt;
+        ssl_certificate_key /home/ubuntu/ansible-apim/files/security/wso2am/wso2carbon.key;
         ssl_ciphers         EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH;
         ssl_protocols       TLSv1.1 TLSv1.2;
 
@@ -20,7 +14,7 @@ server {
         proxy_set_header X-Forwarded-Port 443;
         ssl on;
 
-        server_name portals.apim.com;
+        server_name portals.apimha.com;
 
         location /carbon {
                 proxy_set_header X-Forwarded-Host $host;
@@ -29,7 +23,17 @@ server {
                 proxy_set_header Host $http_host;
                 proxy_read_timeout 5m;
                 proxy_send_timeout 5m;
-                proxy_pass https://km.apim.com:9443/carbon;
+                proxy_pass https://km.apimha.com;
+        }
+
+        location /mgt {
+                proxy_set_header X-Forwarded-Host $host;
+                proxy_set_header X-Forwarded-Server $host;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header Host $http_host;
+                proxy_read_timeout 5m;
+                proxy_send_timeout 5m;
+                proxy_pass https://pub.apimha.com;
         }
 
         location /admin {
@@ -39,7 +43,7 @@ server {
                 proxy_set_header Host $http_host;
                 proxy_read_timeout 5m;
                 proxy_send_timeout 5m;
-                proxy_pass https://pub.apim.com:9443/admin;
+                proxy_pass https://pub.apimha.com;
         }
 
         location /publisher {
@@ -49,7 +53,17 @@ server {
                 proxy_set_header Host $http_host;
                 proxy_read_timeout 5m;
                 proxy_send_timeout 5m;
-                proxy_pass https://pub.apim.com:9443/publisher;
+                proxy_pass https://pub.apimha.com;
+        }
+
+        location /client-registration {
+                proxy_set_header X-Forwarded-Host $host;
+                proxy_set_header X-Forwarded-Server $host;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header Host $http_host;
+                proxy_read_timeout 5m;
+                proxy_send_timeout 5m;
+                proxy_pass https://pub.apimha.com;
         }
 
         location /devportal {
@@ -59,7 +73,7 @@ server {
                 proxy_set_header Host $http_host;
                 proxy_read_timeout 5m;
                 proxy_send_timeout 5m;
-                proxy_pass https://dev.apim.com:9443/devportal;
+                proxy_pass https://dev.apimha.com;
         }
 
         location /authenticationendpoint {
@@ -69,7 +83,7 @@ server {
                 proxy_set_header Host $http_host;
                 proxy_read_timeout 5m;
                 proxy_send_timeout 5m;
-                proxy_pass https://pub.apim.com:9443/authenticationendpoint;
+                proxy_pass https://pub.apimha.com;
         }
 
         location /oauth2 {
@@ -79,7 +93,7 @@ server {
                 proxy_set_header Host $http_host;
                 proxy_read_timeout 5m;
                 proxy_send_timeout 5m;
-                proxy_pass https://pub.apim.com:9443/oauth2;
+                proxy_pass https://pub.apimha.com;
         }
 
         location /logincontext {
@@ -89,7 +103,7 @@ server {
                 proxy_set_header Host $http_host;
                 proxy_read_timeout 5m;
                 proxy_send_timeout 5m;
-                proxy_pass https://pub.apim.com:9443/logincontext;
+                proxy_pass https://pub.apimha.com;
         }
 
         location /commonauth {
@@ -99,7 +113,7 @@ server {
                 proxy_set_header Host $http_host;
                 proxy_read_timeout 5m;
                 proxy_send_timeout 5m;
-                proxy_pass https://pub.apim.com:9443/commonauth ;
+                proxy_pass https://pub.apimha.com;
         }
 
         location /oidc {
@@ -109,7 +123,7 @@ server {
                 proxy_set_header Host $http_host;
                 proxy_read_timeout 5m;
                 proxy_send_timeout 5m;
-                proxy_pass https://pub.apim.com:9443/oidc;
+                proxy_pass https://pub.apimha.com;
         }
 
         location /api/am/publisher {
@@ -119,7 +133,7 @@ server {
                 proxy_set_header Host $http_host;
                 proxy_read_timeout 5m;
                 proxy_send_timeout 5m;
-                proxy_pass https://pub.apim.com:9443/api/am/publisher;
+                proxy_pass https://pub.apimha.com;
         }
 
         location /api/am/admin {
@@ -129,7 +143,7 @@ server {
                 proxy_set_header Host $http_host;
                 proxy_read_timeout 5m;
                 proxy_send_timeout 5m;
-                proxy_pass https://pub.apim.com:9443/api/am/admin;
+                proxy_pass https://pub.apimha.com;
         }
 
         location /api/am/store {
@@ -139,7 +153,7 @@ server {
                 proxy_set_header Host $http_host;
                 proxy_read_timeout 5m;
                 proxy_send_timeout 5m;
-                proxy_pass https://dev.apim.com:9443/api/am/store;
+                proxy_pass https://dev.apimha.com;
         }
 
         location /analytics-dashboard {
@@ -149,11 +163,21 @@ server {
                 proxy_set_header Host $http_host;
                 proxy_read_timeout 5m;
                 proxy_send_timeout 5m;
-                proxy_pass https://analytics.apim.com:9643/analytics-dashboard;
+                proxy_pass https://analytics.apimha.com;
+        }
+
+        location /business-rules {
+                proxy_set_header X-Forwarded-Host $host;
+                proxy_set_header X-Forwarded-Server $host;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header Host $http_host;
+                proxy_read_timeout 5m;
+                proxy_send_timeout 5m;
+                proxy_pass https://analytics.apimha.com;
         }
 
         location /data-provider {
-                proxy_pass https://analytics.apim.com:9643/data-provider;
+                proxy_pass https://analytics.apimha.com;
                 proxy_http_version 1.1;
                 proxy_set_header Upgrade $http_upgrade;
                 proxy_set_header Connection $connection_upgrade;
@@ -167,7 +191,19 @@ server {
                 proxy_set_header Host $http_host;
                 proxy_read_timeout 5m;
                 proxy_send_timeout 5m;
-                proxy_pass https://analytics.apim.com:9643/login;
+                proxy_pass https://analytics.apimha.com;
         }
+
+        location /logout/slo/analytics-dashboard {
+                proxy_set_header X-Forwarded-Host $host;
+                proxy_set_header X-Forwarded-Server $host;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header Host $http_host;
+                proxy_read_timeout 5m;
+                proxy_send_timeout 5m;
+                proxy_pass https://analytics.apimha.com;
+        }
+
 }
+
 

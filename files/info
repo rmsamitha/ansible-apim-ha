@@ -1,19 +1,3 @@
-192.168.114.4	db.apim.com
-192.168.114.4	tm.apim.com
-192.168.114.4	apis.apim.com
-192.168.114.25	km.apim.com
-192.168.114.40	pub.apim.com
-192.168.114.49	dev.apim.com
-192.168.114.54	gw.apim.com
-192.168.114.62	analytics.apim.com
-
-bind-address            = 192.168.112.14
-bind-address            = 192.168.112.17
-bind-address            = 192.168.112.18
-bind-address            = 192.168.112.27
-bind-address            = 192.168.112.31
-bind-address            = 0.0.0.0
-
 ssh ubuntu@192.168.114.4 -i ~/wso2/apim/3.1.0/ansible-apim/files/keys/apim310.key
 
 
@@ -25,8 +9,9 @@ ssh ubuntu@dev.apim.com -i files/keys/apim310.key
 ssh ubuntu@analytics.apim.com -i files/keys/apim310.key
 
 
-keytool -genkey -alias wso2carbon -keyalg RSA -keysize 2048 -keystore wso2carbon.jks -dname "CN=*.apim.com, OU=Home,O=Home,L=SL,S=WS,C=LK" -storepass wso2carbon -keypass wso2carbon \
--ext SAN=dns:pub.apim.com,dns:dev.apim.com,dns:gw.apim.com,dns:km.apim.com,dns:tm.apim.com,dns:analytics.apim.com,dns:portals.apim.com,ip:127.0.0.1 \
+keytool -genkey -alias wso2carbon -keyalg RSA -keysize 2048 -keystore wso2carbon.jks -dname "CN=*.apimha.com, OU=Home,O=Home,L=SL,S=WS,C=LK" \
+-storepass wso2carbon -keypass wso2carbon \
+-ext SAN=dns:tm1.apimha.com,dns:km1.apimha.com,dns:pub1.apimha.com,dns:dev1.apimha.com,dns:gw1.apimha.com,dns:analytics1.apimha.com,dns:tm2.apimha.com,dns:km2.apimha.com,dns:pub2.apimha.com,dns:dev2.apimha.com,dns:gw2.apimha.com,dns:analytics2.apimha.com,dns:node1.apimha.com,dns:node2.apimha.com,ip:127.0.0.1 \
 -ext KeyUsage=digitalSignature,keyEncipherment,keyCertSign -ext ExtendedKeyUsage=serverAuth,clientAuth
 
 keytool -export -alias wso2carbon -keystore wso2carbon.jks -file wso2carbon.pem -storepass wso2carbon
@@ -50,24 +35,10 @@ keytool -import -alias gateway_certificate_alias -file wso2carbon.pem -keystore 
 https://analytics.apim.com:9643/analytics-dashboard/
 
 
-
-
 /home/ubuntu/ansible-apim/files/packs/wso2am-3.1.0-beta
 
 https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-18-04
 https://linuxize.com/post/how-to-setup-a-firewall-with-ufw-on-ubuntu-18-04/
-
-
-[apim]
-apim-tm_1 ansible_host=tm.apim.com ansible_user=ubuntu ansible_ssh_private_key_file=/Users/rukshan/wso2/apim/3.1.0/ansible-apim/files/keys/apim310.key
-apim-km_1 ansible_host=km.apim.com ansible_user=ubuntu ansible_ssh_private_key_file=/Users/rukshan/wso2/apim/3.1.0/ansible-apim/files/keys/apim310.key
-apim-publisher_1 ansible_host=pub.apim.com ansible_user=ubuntu ansible_ssh_private_key_file=/Users/rukshan/wso2/apim/3.1.0/ansible-apim/files/keys/apim310.key
-apim-devportal_1 ansible_host=dev.apim.com ansible_user=ubuntu ansible_ssh_private_key_file=/Users/rukshan/wso2/apim/3.1.0/ansible-apim/files/keys/apim310.key
-apim-gateway_1 ansible_host=gw.apim.com ansible_user=ubuntu ansible_ssh_private_key_file=/Users/rukshan/wso2/apim/3.1.0/ansible-apim/files/keys/apim310.key
-
-[apim-analytics]
-apim-analytics-worker_1 ansible_host=analytics.apim.com ansible_user=ubuntu ansible_ssh_private_key_file=/Users/rukshan/wso2/apim/3.1.0/ansible-apim/files/keys/apim310.key
-
 
 https://www.cyberciti.biz/faq/install-and-configure-nginx-on-ubuntu-linux-18-04-lts/
 https://www.linode.com/docs/web-servers/nginx/install-nginx-ubuntu/
@@ -86,3 +57,11 @@ Add to /etc/hosts
 Access Portals
 https://portals.apim.com/publisher/apis
 https://portals.apim.com/devportal/apis
+
+
+dns:db.apimha.com
+dns:portals.apimha.com
+dns:apis.apimha.com
+
+
+dns:tm1.apimha.com,dns:km1.apimha.com,dns:pub1.apimha.com,dns:dev1.apimha.com,dns:gw1.apimha.com,dns:analytics1.apimha.com,dns:tm2.apimha.com,dns:km2.apimha.com,dns:pub2.apimha.com,dns:dev2.apimha.com,dns:gw2.apimha.com,dns:analytics2.apimha.com,dns:node1.apimha.com,dns:node2.apimha.com

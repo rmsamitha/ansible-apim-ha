@@ -1,5 +1,6 @@
 server {
-        listen apis.apim.com:443 ssl;
+        listen *:443 ssl;
+        listen [::]:443 ssl;
 
         ssl_certificate     /home/ubuntu/ansible-apim/files/security/wso2am/wso2carbon.crt;
         ssl_certificate_key /home/ubuntu/ansible-apim/files/security/wso2am/wso2carbon.key;
@@ -13,7 +14,7 @@ server {
         proxy_set_header X-Forwarded-Port 443;
         ssl on;
 
-        server_name apis.apim.com;
+        server_name apis.apimha.com;
 
         location / {
                 proxy_set_header X-Forwarded-Host $host;
@@ -22,7 +23,7 @@ server {
                 proxy_set_header Host $http_host;
                 proxy_read_timeout 5m;
                 proxy_send_timeout 5m;
-                proxy_pass https://gw.apim.com:8243/;
+                proxy_pass https://api.gw.apimha.com;
         }
 }
 
