@@ -11,7 +11,7 @@ ssh ubuntu@analytics.apim.com -i files/keys/apim310.key
 
 keytool -genkey -alias wso2carbon -keyalg RSA -keysize 2048 -keystore wso2carbon.jks -dname "CN=*.apimha.com, OU=Home,O=Home,L=SL,S=WS,C=LK" \
 -storepass wso2carbon -keypass wso2carbon \
--ext SAN=dns:tm1.apimha.com,dns:km1.apimha.com,dns:pub1.apimha.com,dns:dev1.apimha.com,dns:gw1.apimha.com,dns:analytics1.apimha.com,dns:tm2.apimha.com,dns:km2.apimha.com,dns:pub2.apimha.com,dns:dev2.apimha.com,dns:gw2.apimha.com,dns:analytics2.apimha.com,dns:node1.apimha.com,dns:node2.apimha.com,ip:127.0.0.1 \
+-ext SAN=dns:tm1.apimha.com,dns:km1.apimha.com,dns:pub1.apimha.com,dns:dev1.apimha.com,dns:gw1.apimha.com,dns:analytics1.apimha.com,dns:tm2.apimha.com,dns:km2.apimha.com,dns:pub2.apimha.com,dns:dev2.apimha.com,dns:gw2.apimha.com,dns:analytics2.apimha.com,dns:node1.apimha.com,dns:node2.apimha.com,dns:tmlb.apimha.com,dns:kmlb.apimha.com,dns:gwlb.apimha.com,ip:127.0.0.1 \
 -ext KeyUsage=digitalSignature,keyEncipherment,keyCertSign -ext ExtendedKeyUsage=serverAuth,clientAuth
 
 keytool -export -alias wso2carbon -keystore wso2carbon.jks -file wso2carbon.pem -storepass wso2carbon
@@ -64,4 +64,5 @@ dns:portals.apimha.com
 dns:apis.apimha.com
 
 
-dns:tm1.apimha.com,dns:km1.apimha.com,dns:pub1.apimha.com,dns:dev1.apimha.com,dns:gw1.apimha.com,dns:analytics1.apimha.com,dns:tm2.apimha.com,dns:km2.apimha.com,dns:pub2.apimha.com,dns:dev2.apimha.com,dns:gw2.apimha.com,dns:analytics2.apimha.com,dns:node1.apimha.com,dns:node2.apimha.com
+dns:tm1.apimha.com,dns:km1.apimha.com,dns:pub1.apimha.com,dns:dev1.apimha.com,dns:gw1.apimha.com,dns:analytics1.apimha.com,dns:tm2.apimha.com,dns:km2.apimha.com,dns:pub2.apimha.com,dns:dev2.apimha.com,dns:gw2.apimha.com,dns:analytics2.apimha.com,dns:node1.apimha.com,dns:node2.apimha.com,dns:tmlb.apimha.com,dns:kmlb.apimha.com,dns:gwlb.apimha.com
+

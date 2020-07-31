@@ -112,7 +112,7 @@ gateway_environments:
 # Traffic Manager configurations
 traffic_manager_receiver_url: tcp://tm1.apimha.com:${receiver.url.port}
 traffic_manager_auth_url: ssl://tm1.apimha.com:${auth.url.port}
-throttle_config_policy_deployer_url: https://tmlb.apimha.com/services/
+throttle_config_policy_deployer_url: https://tmlb.apimha.com
 
 throttle_decision_endpoints:
   - tcp://tm1.apimha.com:5683
