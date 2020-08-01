@@ -448,6 +448,9 @@ wso2.datasources:
 
 
 siddhi:
+  properties:
+   partitionById: true
+   shardId: {{ shard_id }}
   refs:
     - ref:
         name: 'grpcSource'

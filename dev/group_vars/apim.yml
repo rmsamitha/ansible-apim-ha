@@ -124,17 +124,14 @@ throttling_url_group:
       - ssl://tm2.apimha.com:9722
 
 # event hub
-eventhub_service_url: https://tmlb.apimha.com
+eventhub_service_url: https://tm1.apimha.com:9454
 eventhub_decision_endpoints:
   - tcp://tm1.apimha.com:5683
-  - tcp://tm2.apimha.com:5683
 eventhub_url_group:
   - urls:
       - tcp://tm1.apimha.com:9622
-      - tcp://tm2.apimha.com:9622
     auth_urls:
       - ssl://tm1.apimha.com:9722
-      - ssl://tm2.apimha.com:9722
 
 # Workflow configurations
 workflow_enable: "false"
