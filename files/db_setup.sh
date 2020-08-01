@@ -13,18 +13,18 @@ mysql -uamuser -pPass@123 -h$3<<EOF
 	create database amdb;
 	use amdb;
 	source $apimHome/dbscripts/apimgt/mysql.sql;
-    SET GLOBAL max_connections = 500;
+    SET GLOBAL max_connections = 5000;
 
 	drop database if exists sharedDB;
 	create database sharedDB;
 	use sharedDB;
 	source $apimHome/dbscripts/mysql.sql;
-    SET GLOBAL max_connections = 1000;
+    SET GLOBAL max_connections = 5000;
 
 	drop database if exists APIM_ANALYTICS_DB;
 	create database APIM_ANALYTICS_DB;
     use APIM_ANALYTICS_DB;
-    SET GLOBAL max_connections = 1000;
+    SET GLOBAL max_connections = 5000;
 
     drop database if exists DASHBOARD_DB;
 	create database DASHBOARD_DB;
@@ -38,7 +38,7 @@ mysql -uamuser -pPass@123 -h$3<<EOF
 	drop database if exists PERSISTENCE_DB;
 	create database PERSISTENCE_DB;
 
-	SET GLOBAL max_connections = 1000;
+	SET GLOBAL max_connections = 5000;
 EOF
 elif [ "$1" = "mssql" ]; then
 	echo "Using mssql"

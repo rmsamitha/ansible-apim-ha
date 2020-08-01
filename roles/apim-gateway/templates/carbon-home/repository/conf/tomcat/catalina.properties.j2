@@ -1,0 +1,322 @@
+#
+# Copyright (c) 2019, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+#
+#  WSO2 Inc. licenses this file to you under the Apache License,
+#  Version 2.0 (the "License"); you may not use this file except
+#  in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing,
+#  software distributed under the License is distributed on an
+#  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#  KIND, either express or implied.  See the License for the
+#  specific language governing permissions and limitations
+#  under the License.
+#
+
+# Default list of JAR files that should not be scanned using the JarScanner
+# functionality. This is typically used to scan JARs for configuration
+# information. JARs that do not contain such information may be excluded from
+# the scan to speed up the scanning process. This is the default list. JARs on
+# this list are excluded from all scans. The list must be a comma separated list
+# of JAR file names.
+# The list of JARs to skip may be over-ridden at a Context level for individual
+# scan types by configuring a JarScanner with a nested JarScanFilter.
+# The JARs listed below include:
+# - Tomcat Bootstrap JARs
+# - Tomcat API JARs
+# - Catalina JARs
+# - Jasper JARs
+# - Tomcat JARs
+# - Common non-Tomcat JARs
+# - Test JARs (JUnit, Cobertura and dependencies)
+tomcat.util.scan.StandardJarScanFilter.jarsToSkip=\
+commons-codec-*jar,\
+commons-lang-*.jar,\
+commons-lang3-*.jar,\
+slf4j-api-*.jar,\
+org.wso2.carbon.bootstrap-*.jar,\
+tcpmon-*.jar,\
+tomcat-juli-*.jar,\
+ant-contrib-*.jar,\
+antlr4-runtime-*.jar,\
+cava-toml-*.jar,\
+gson-*.jar,\
+guava-*.jar,\
+jackson-annotations-*.jar,\
+jackson-core-*.jar,\
+jackson-databind-*.jar,\
+jinjava-*.jar,\
+jsoup-*.jar,\
+org.wso2.carbon.logging-*.jar,\
+org.wso2.carbon.nextgen.config-*.jar,\
+org.wso2.carbon.server-*.jar,\
+org.wso2.carbon.tomcat.ext-*.jar,\
+re2j-*.jar,\
+stax2-api-*.jar,\
+woodstox-core-asl-*.jar,\
+xalan-*.jar,\
+xercesImpl-*.jar,\
+xml-apis-*.jar,\
+xml-resolver-*.jar,\
+tools.jar,\
+jaxb-impl-*.jar,\
+istack-commons-runtime-*.jar,\
+activation-*.jar,\
+commons-logging-*.jar,\
+config-mapper-*.jar,\
+geronimo-jta_*.jar,\
+javax.annotation-api-*.jar,\
+jaxb-api-*.jar,\
+log4j-api-*.jar,\
+log4j-core-*.jar,\
+log4j-jcl-*.jar,\
+org.jaggeryjs.jaggery.core-0.14.12.jar,\
+javax.servlet.jsp-2.0.0.v200806031607.jar,\
+org.wso2.carbon.utils-4.5.2.jar,\
+bcprov-jdk15on-1.60.0.wso2v1.jar,\
+bcprov-jdk15on-1.60.jar,\
+org.wso2.carbon.user.api-4.5.2.jar,\
+wrapper-3.2.3.jar,\
+pax-logging-log4j2-1.11.0.jar,\
+log-API-5.0.0.jar,\
+osgi.core-6.0.0.jar,\
+osgi.cmpn-6.0.0.jar,\
+org.wso2.carbon.queuing-4.5.2.jar,\
+org.wso2.carbon.base-4.5.2.jar,\
+org.wso2.securevault-1.1.3.jar,\
+axiom-api-1.2.11.jar,\
+geronimo-activation_1.1_spec-1.0.2.jar,\
+geronimo-javamail_1.4_spec-1.0.jar,\
+axiom-impl-1.2.11.jar,\
+wstx-asl-3.2.9.jar,\
+jline-0.9.94.jar,\
+junit-3.8.1.jar,\
+commons-cli-1.0.jar,\
+commons-io-2.0.jar,\
+org.wso2.carbon.securevault-4.5.2.jar,\
+org.eclipse.osgi-3.14.0.jar,\
+axis2-1.6.1-wso2v40.jar,\
+smack-3.0.4.wso2v1.jar,\
+smackx-3.0.4.wso2v1.jar,\
+jaxen-1.1.1.jar,\
+dom4j-1.6.1.jar,\
+jdom-1.0.jar,\
+xom-1.0.jar,\
+xmlParserAPIs-2.6.2.jar,\
+icu4j-2.6.1.jar,\
+commons-fileupload-1.3.3.wso2v1.jar,\
+ant-1.7.0.wso2v1.jar,\
+ant-1.7.0.jar,\
+ant-launcher-1.7.0.jar,\
+javax.servlet-3.0.0.v201112011016.jar,\
+commons-httpclient-3.1.0.wso2v6.jar,\
+org.wso2.carbon.registry.api-4.5.2.jar,\
+org.osgi.service.component.annotations-1.3.0.jar,\
+org.osgi.annotation-6.0.0.jar,\
+org.osgi.service.metatype.annotations-1.3.0.jar,\
+commons-io-2.0.0.wso2v1.jar,\
+geronimo-servlet_3.0_spec-1.0.jar,\
+org.jaggeryjs.scriptengine-0.14.12.jar,\
+commons-httpclient-3.1.0.wso2v2.jar,\
+commons-httpclient-3.1.jar,\
+not-yet-commons-ssl-0.3.9.jar,\
+org.eclipse.wst.jsdt.debug.rhino.debugger-1.0.300.v201109150503.jar,\
+org.eclipse.wst.jsdt.debug.transport-1.0.100.v201109150330.jar,\
+org.wso2.carbon.core-4.5.2.jar,\
+hazelcast-3.12.2.wso2v1.jar,\
+org.eclipse.osgi.services-3.5.100.v20160504-1419.jar,\
+org.eclipse.equinox.http.helper-1.1.0.wso2v1.jar,\
+org.eclipse.osgi-3.7.0.v20110613.jar,\
+org.eclipse.osgi.services-3.3.0.v20110513.jar,\
+javax.cache.wso2-4.5.2.jar,\
+org.wso2.carbon.registry.core-4.5.2.jar,\
+annotations-1.3.2.jar,\
+XmlSchema-1.4.7.wso2v1.jar,\
+XmlSchema-1.4.7-wso2v1.jar,\
+org.wso2.carbon.registry.xboot-4.5.2.jar,\
+compass-2.0.1.wso2v2.jar,\
+abdera-1.0.0.wso2v3.jar,\
+jdbc-pool-9.0.16.wso2v1.jar,\
+commons-pool-1.5.6.wso2v1.jar,\
+commons-pool-1.5.6.jar,\
+org.wso2.carbon.user.core-4.5.2.jar,\
+commons-dbcp-1.4.0.wso2v1.jar,\
+org.wso2.carbon.crypto.api-1.1.2.jar,\
+commons-collections-3.2.2.wso2v1.jar,\
+neethi-2.0.4.wso2v5.jar,\
+httpcore-4.1.0-wso2v1.jar,\
+tomcat-catalina-ha-9.0.22.jar,\
+tomcat-tribes-9.0.22.jar,\
+tomcat-catalina-9.0.22.jar,\
+tomcat-jsp-api-9.0.22.jar,\
+tomcat-el-api-9.0.22.jar,\
+tomcat-annotations-api-9.0.22.jar,\
+tomcat-api-9.0.22.jar,\
+tomcat-jni-9.0.22.jar,\
+tomcat-jaspic-api-9.0.22.jar,\
+tomcat-util-9.0.22.jar,\
+tomcat-util-scan-9.0.22.jar,\
+wsdl4j-1.6.2.wso2v3.jar,\
+org.jaggeryjs.hostobjects.file-0.14.12.jar,\
+commons-fileupload-1.2.2.wso2v1.jar,\
+commons-fileupload-1.2.2.jar,\
+javax.servlet-3.0.0.wso2v1.jar,\
+tomcat-servlet-api-7.0.21.jar,\
+findbugs-3.0.1.jar,\
+jcip-annotations-1.0.jar,\
+jsr305-2.0.1.jar,\
+bcel-findbugs-6.0.jar,\
+jFormatString-2.0.1.jar,\
+asm-debug-all-5.0.2.jar,\
+asm-commons-5.0.2.jar,\
+asm-tree-5.0.2.jar,\
+asm-5.0.2.jar,\
+AppleJavaExtensions-1.4.jar,\
+org.jaggeryjs.hostobjects.web-0.14.12.jar,\
+wso2-uri-templates-1.0.0.jar,\
+org.jaggeryjs.hostobjects.stream-0.14.12.jar,\
+org.jaggeryjs.hostobjects.log-0.14.12.jar,\
+org.jaggeryjs.hostobjects.jaggeryparser-0.14.12.jar,\
+axiom-1.2.11-wso2v16.jar,\
+geronimo-stax-api_1.0_spec-1.0.1.wso2v2.jar,\
+geronimo-stax-api_1.0_spec-1.0.1.jar,\
+js-1.7.0.R4.wso2v1.jar,\
+rhino-1.7R4.jar,\
+json-simple-1.1.wso2v1.jar,\
+tomcat-websocket-9.0.21.wso2v1.jar,\
+pax-logging-api-1.10.1.jar,\
+commons-cli-1.2.0.wso2v1.jar,\
+h2-database-engine-1.2.140.wso2v3.jar,\
+org.jaggeryjs.jaggery.core-0.14.12.jar,\
+javax.servlet.jsp-2.0.0.v200806031607.jar,\
+org.wso2.carbon.utils-4.5.2.jar,\
+bcprov-jdk15on-1.60.0.wso2v1.jar,\
+bcprov-jdk15on-1.60.jar,\
+org.wso2.carbon.user.api-4.5.2.jar,\
+wrapper-3.2.3.jar,\
+pax-logging-log4j2-1.11.0.jar,\
+log-API-5.0.0.jar,\
+osgi.core-6.0.0.jar,\
+osgi.cmpn-6.0.0.jar,\
+org.wso2.carbon.queuing-4.5.2.jar,\
+org.wso2.carbon.base-4.5.2.jar,\
+org.wso2.securevault-1.1.3.jar,\
+axiom-api-1.2.11.jar,\
+geronimo-activation_1.1_spec-1.0.2.jar,\
+geronimo-javamail_1.4_spec-1.0.jar,\
+axiom-impl-1.2.11.jar,\
+wstx-asl-3.2.9.jar,\
+jline-0.9.94.jar,\
+junit-3.8.1.jar,\
+commons-cli-1.0.jar,\
+commons-io-2.0.jar,\
+org.wso2.carbon.securevault-4.5.2.jar,\
+org.eclipse.osgi-3.14.0.jar,\
+axis2-1.6.1-wso2v40.jar,\
+smack-3.0.4.wso2v1.jar,\
+smackx-3.0.4.wso2v1.jar,\
+jaxen-1.1.1.jar,\
+dom4j-1.6.1.jar,\
+jdom-1.0.jar,\
+xom-1.0.jar,\
+xmlParserAPIs-2.6.2.jar,\
+icu4j-2.6.1.jar,\
+commons-fileupload-1.3.3.wso2v1.jar,\
+ant-1.7.0.wso2v1.jar,\
+ant-1.7.0.jar,\
+ant-launcher-1.7.0.jar,\
+javax.servlet-3.0.0.v201112011016.jar,\
+commons-httpclient-3.1.0.wso2v6.jar,\
+org.wso2.carbon.registry.api-4.5.2.jar,\
+org.osgi.service.component.annotations-1.3.0.jar,\
+org.osgi.annotation-6.0.0.jar,\
+org.osgi.service.metatype.annotations-1.3.0.jar,\
+commons-io-2.0.0.wso2v1.jar,\
+geronimo-servlet_3.0_spec-1.0.jar,\
+org.jaggeryjs.scriptengine-0.14.12.jar,\
+commons-httpclient-3.1.0.wso2v2.jar,\
+commons-httpclient-3.1.jar,\
+not-yet-commons-ssl-0.3.9.jar,\
+org.eclipse.wst.jsdt.debug.rhino.debugger-1.0.300.v201109150503.jar,\
+org.eclipse.wst.jsdt.debug.transport-1.0.100.v201109150330.jar,\
+org.wso2.carbon.core-4.5.2.jar,\
+hazelcast-3.12.2.wso2v1.jar,\
+org.eclipse.osgi.services-3.5.100.v20160504-1419.jar,\
+org.eclipse.equinox.http.helper-1.1.0.wso2v1.jar,\
+org.eclipse.osgi-3.7.0.v20110613.jar,\
+org.eclipse.osgi.services-3.3.0.v20110513.jar,\
+javax.cache.wso2-4.5.2.jar,\
+org.wso2.carbon.registry.core-4.5.2.jar,\
+annotations-1.3.2.jar,\
+XmlSchema-1.4.7.wso2v1.jar,\
+XmlSchema-1.4.7-wso2v1.jar,\
+org.wso2.carbon.registry.xboot-4.5.2.jar,\
+compass-2.0.1.wso2v2.jar,\
+abdera-1.0.0.wso2v3.jar,\
+jdbc-pool-9.0.16.wso2v1.jar,\
+commons-pool-1.5.6.wso2v1.jar,\
+commons-pool-1.5.6.jar,\
+org.wso2.carbon.user.core-4.5.2.jar,\
+commons-dbcp-1.4.0.wso2v1.jar,\
+org.wso2.carbon.crypto.api-1.1.2.jar,\
+commons-collections-3.2.2.wso2v1.jar,\
+neethi-2.0.4.wso2v5.jar,\
+httpcore-4.1.0-wso2v1.jar,\
+tomcat-catalina-ha-9.0.22.jar,\
+tomcat-tribes-9.0.22.jar,\
+tomcat-catalina-9.0.22.jar,\
+tomcat-jsp-api-9.0.22.jar,\
+tomcat-el-api-9.0.22.jar,\
+tomcat-annotations-api-9.0.22.jar,\
+tomcat-api-9.0.22.jar,\
+tomcat-jni-9.0.22.jar,\
+tomcat-jaspic-api-9.0.22.jar,\
+tomcat-util-9.0.22.jar,\
+tomcat-util-scan-9.0.22.jar,\
+wsdl4j-1.6.2.wso2v3.jar,\
+org.jaggeryjs.hostobjects.file-0.14.12.jar,\
+commons-fileupload-1.2.2.wso2v1.jar,\
+commons-fileupload-1.2.2.jar,\
+javax.servlet-3.0.0.wso2v1.jar,\
+tomcat-servlet-api-7.0.21.jar,\
+findbugs-3.0.1.jar,\
+jcip-annotations-1.0.jar,\
+jsr305-2.0.1.jar,\
+bcel-findbugs-6.0.jar,\
+jFormatString-2.0.1.jar,\
+asm-debug-all-5.0.2.jar,\
+asm-commons-5.0.2.jar,\
+asm-tree-5.0.2.jar,\
+asm-5.0.2.jar,\
+AppleJavaExtensions-1.4.jar,\
+org.jaggeryjs.hostobjects.web-0.14.12.jar,\
+wso2-uri-templates-1.0.0.jar,\
+org.jaggeryjs.hostobjects.stream-0.14.12.jar,\
+org.jaggeryjs.hostobjects.log-0.14.12.jar,\
+org.jaggeryjs.hostobjects.jaggeryparser-0.14.12.jar,\
+axiom-1.2.11-wso2v16.jar,\
+geronimo-stax-api_1.0_spec-1.0.1.wso2v2.jar,\
+geronimo-stax-api_1.0_spec-1.0.1.jar,\
+js-1.7.0.R4.wso2v1.jar,\
+rhino-1.7R4.jar,\
+json-simple-1.1.wso2v1.jar,\
+tomcat-websocket-9.0.21.wso2v1.jar,\
+pax-logging-api-1.10.1.jar,\
+commons-cli-1.2.0.wso2v1.jar,\
+h2-database-engine-1.2.140.wso2v3.jar,\
+org.apache.felix.gogo.shell_*.jar
+
+# Default list of JAR files that should be scanned that overrides the default
+# jarsToSkip list above. This is typically used to include a specific JAR that
+# has been excluded by a broad file name pattern in the jarsToSkip list.
+# The list of JARs to scan may be over-ridden at a Context level for individual
+# scan types by configuring a JarScanner with a nested JarScanFilter.
+tomcat.util.scan.StandardJarScanFilter.jarsToScan=\
+log4j-taglib*.jar,\
+log4j-web*.jar,\
+log4javascript*.jar,\
+slf4j-taglib*.jar
+
