@@ -132,3 +132,7 @@ event_listening_endpoints = [{% for endpoint in eventhub_decision_endpoints %}"{
 urls=[{% for url in url_group['urls'] %}"{{ url }}"{%- if not loop.last -%},{% endif %}{% endfor %}]
 auth_urls=[{% for url in url_group['auth_urls'] %}"{{ url }}"{%- if not loop.last -%},{% endif %}{% endfor %}]
 {% endfor %}
+
+[apim.sync_runtime_artifacts.publisher]
+artifact_saver = "DBSaver"
+publish_directly_to_gateway = "false"

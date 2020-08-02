@@ -95,3 +95,10 @@ event_listening_endpoints = [{% for endpoint in eventhub_decision_endpoints %}"{
 urls=[{% for url in url_group['urls'] %}"{{ url }}"{%- if not loop.last -%},{% endif %}{% endfor %}]
 auth_urls=[{% for url in url_group['auth_urls'] %}"{{ url }}"{%- if not loop.last -%},{% endif %}{% endfor %}]
 {% endfor %}
+
+[apim.sync_runtime_artifacts.gateway]
+gateway_labels =["Production and Sandbox"]
+artifact_retriever = "DBRetriever"
+deployment_retry_duration = 15000
+data_retrieval_mode = "sync"
+event_waiting_time = 5000

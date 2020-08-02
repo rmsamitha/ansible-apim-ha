@@ -118,9 +118,11 @@ throttle_decision_endpoints:
 throttling_url_group:
   - traffic_manager_urls:
       - tcp://tm1.apimha.com:9622
-      - tcp://tm2.apimha.com:9622
     traffic_manager_auth_urls:
       - ssl://tm1.apimha.com:9722
+  - traffic_manager_urls:
+      - tcp://tm2.apimha.com:9622
+    traffic_manager_auth_urls:
       - ssl://tm2.apimha.com:9722
 
 # event hub
