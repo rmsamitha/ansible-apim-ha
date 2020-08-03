@@ -26,6 +26,16 @@ server {
                 proxy_pass https://km.apimha.com;
         }
 
+        location /t/ {
+                proxy_set_header X-Forwarded-Host $host;
+                proxy_set_header X-Forwarded-Server $host;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header Host $http_host;
+                proxy_read_timeout 5m;
+                proxy_send_timeout 5m;
+                proxy_pass https://km.apimha.com;
+        }
+
         location /mgt {
                 proxy_set_header X-Forwarded-Host $host;
                 proxy_set_header X-Forwarded-Server $host;
