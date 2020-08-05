@@ -50,7 +50,7 @@ event_listening_endpoints = [{% for endpoint in eventhub_decision_endpoints %}"{
 {% for url_group in eventhub_url_group %}
 [[apim.event_hub.publish.url_group]]
 urls=[{% for url in url_group['urls'] %}"{{ url }}"{%- if not loop.last -%},{% endif %}{% endfor %}]
-auth_urls=[{% for url in url_group['auth_urls'] %}"{{ url }}"{%- if ntoken_revocationot loop.last -%},{% endif %}{% endfor %}]
+auth_urls=[{% for url in url_group['auth_urls'] %}"{{ url }}"{%- if not loop.last -%},{% endif %}{% endfor %}]
 {% endfor %}
 
 [[event_listener]]
