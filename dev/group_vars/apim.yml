@@ -17,7 +17,7 @@
 wso2_group: wso2
 wso2_user: wso2carbon
 product_name: wso2am
-product_version: "{{ version }}"
+product_version: "{{ apim_version }}"
 target: /mnt
 product_package_location: files
 backup_dir: /tmp

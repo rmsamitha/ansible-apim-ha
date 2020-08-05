@@ -40,7 +40,7 @@ sudo service wso2am-analytics-dashboard start
  
 ## deploy and run ansible
 ``` 
-    ansible-playbook -i dev site.yml --extra-vars "version=3.2.0"
+    ansible-playbook -i dev site.yml --extra-vars "apim_version=3.2.0 analytics_version=3.2.0"
 ``` 
 
 ## Portals
