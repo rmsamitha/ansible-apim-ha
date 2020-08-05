@@ -112,6 +112,8 @@ gateway_environments:
 # Traffic Manager configurations
 throttle_config_policy_deployer_url: https://tmlb.apimha.com/services/
 
+notification_endpoint_url: https://tmlb.apimha.com
+
 throttle_decision_endpoints:
   - tcp://tm1.apimha.com:5683
   - tcp://tm2.apimha.com:5683

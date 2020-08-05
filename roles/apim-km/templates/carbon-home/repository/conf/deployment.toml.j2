@@ -39,34 +39,6 @@ file_name = "{{ trust_store_location }}"
 type = "JKS"
 password = "{{ trust_store_password }}"
 
-# Caches
-[apim.cache.km_token]
-enable = false
-expiry_time = 15
-
-[apim.cache.jwt_claim]
-enable = true
-expiry_time = 900
-
-# JWT Generation
-[apim.jwt]
-enable = {{ jwt_enable }}
-encoding = "{{ jwt_encoding }}" # base64,base64url
-#generator_impl = "org.wso2.carbon.apimgt.keymgt.token.JWTGenerator"
-claim_dialect = "{{ jwt_claim_dialect }}"
-header = "X-JWT-Assertion"
-signing_algorithm = "{{ jwt_signing_algorithm }}"
-#enable_user_claims = true
-#claims_extractor_impl = "org.wso2.carbon.apimgt.impl.token.DefaultClaimsRetriever"
-
-[apim.throttling]
-{% for url_group in throttling_url_group %}
-[[apim.throttling.url_group]]
-traffic_manager_urls=[{% for url in url_group['traffic_manager_urls'] %}"{{ url }}"{%- if not loop.last -%},{% endif %}{% endfor %}]
-traffic_manager_auth_urls=[{% for url in url_group['traffic_manager_auth_urls'] %}"{{ url }}"{%- if not loop.last -%},{% endif %}{% endfor %}]
-
-{% endfor %}
-
 [[event_handler]]
 name="userPostSelfRegistration"
 subscriptions=["POST_ADD_USER"]
@@ -81,5 +53,16 @@ urls=[{% for url in url_group['urls'] %}"{{ url }}"{%- if not loop.last -%},{% e
 auth_urls=[{% for url in url_group['auth_urls'] %}"{{ url }}"{%- if not loop.last -%},{% endif %}{% endfor %}]
 {% endfor %}
 
-[oauth.oidc.id_token]
-issuer = "https://apim.am.wso2.com/oauth2/token"
+[[event_listener]]
+id = "token_revocation"
+type = "org.wso2.carbon.identity.core.handler.AbstractIdentityHandler"
+name = "org.wso2.is.notification.ApimOauthEventInterceptor"
+order = 1
+
+[event_listener.properties]
+service_url = "{{ throttle_config_policy_deployer_url }}"
+
+notification_endpoint = "{{ notification_endpoint_url }}/internal/data/v1/notify"
+username = "{{ admin_username }}"
+password = "{{ admin_password }}"
+'header.X-WSO2-KEY-MANAGER' = "default"

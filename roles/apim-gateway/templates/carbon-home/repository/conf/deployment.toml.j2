@@ -36,6 +36,10 @@ service_url = "{{ key_manager_server_url }}"
 username= "$ref{super_admin.username}"
 password= "$ref{super_admin.password}"
 
+[apim.jwt]
+enable = true
+enable_user_claims = true
+
 # Traffic Manager configurations
 [apim.throttling]
 username= "$ref{super_admin.username}"
