@@ -79,7 +79,7 @@
 
     - name: Change the owner of WSO2 directory
       file:
-        path: "{{ target }}"
+        path: "{{ product_dir }}"
         state: directory
         recurse: true
         owner: "{{ wso2_user }}"

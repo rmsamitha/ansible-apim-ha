@@ -124,7 +124,7 @@ username= "$ref{super_admin.username}"
 password= "$ref{super_admin.password}"
 
 [apim.event_hub]
-service_url = "{{ eventhub_service_url }}"
+#service_url = "{{ eventhub_service_url }}"
 event_listening_endpoints = [{% for endpoint in eventhub_decision_endpoints %}"{{ endpoint }}"{%- if not loop.last -%},{% endif %}{% endfor %}]
 
 {% for url_group in eventhub_url_group %}
@@ -133,6 +133,6 @@ urls=[{% for url in url_group['urls'] %}"{{ url }}"{%- if not loop.last -%},{% e
 auth_urls=[{% for url in url_group['auth_urls'] %}"{{ url }}"{%- if not loop.last -%},{% endif %}{% endfor %}]
 {% endfor %}
 
-[apim.sync_runtime_artifacts.publisher]
-artifact_saver = "DBSaver"
-publish_directly_to_gateway = "false"
+#[apim.sync_runtime_artifacts.publisher]
+#artifact_saver = "DBSaver"
+#publish_directly_to_gateway = "false"
