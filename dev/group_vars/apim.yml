@@ -178,6 +178,6 @@ internal_keystore_key_alias: wso2carbon
 # Changes applied to axis2.xml file.
 # clustering_enable: false
 
-recommendations_api: https://gateway.api.cloud.wso2.com/t/aiapis/recommendations-test/1.0.0
-recommendations_consumer_key: VMKfk6cdWxviMya6XN0mlrLek_4a
-recommendations_consumer_secret: TI2Zku5vjValgp3VwuhdgT65YL8a
+recommendations_api: https://gateway.api.cloud.wso2.com/t/aiapis/recommendations/1.0.0
+recommendations_consumer_key: DIBSZ06vTMK243gtnXg9HnXXuKEa
+recommendations_consumer_secret: _bPR3V2uP2OzWnTFCr1MxaiZ3Qoa
