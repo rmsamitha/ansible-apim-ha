@@ -53,6 +53,12 @@ http_endpoint = "{{ environment.http_endpoint }}"
 https_endpoint = "{{ environment.https_endpoint }}"
 {% endfor %}
 
+# key manager implementation
+[apim.key_manager]
+service_url = "{{ key_manager_server_url }}"
+username= "$ref{super_admin.username}"
+password= "$ref{super_admin.password}"
+
 [apim.analytics]
 enable = "{{ analytics_enabled }}"
 receiver_username = "{{ stream_processor_username }}"
@@ -70,18 +76,15 @@ analytics_auth_url =[{% for url in url_group['analytics_auth_urls'] %}"{{ url }}
 
 # Traffic Manager configurations
 [apim.throttling]
-service_url = "{{ throttle_config_policy_deployer_url }}"
 username= "$ref{super_admin.username}"
 password= "$ref{super_admin.password}"
-enable_header_based_throttling = true
-enable_jwt_claim_based_throttling = true
-enable_query_param_based_throttling = true
+service_url = "{{ throttle_config_policy_deployer_url }}"
+throttle_decision_endpoints = [{% for endpoint in throttle_decision_endpoints %}"{{ endpoint }}"{%- if not loop.last -%},{% endif %}{% endfor %}]
 
 {% for url_group in throttling_url_group %}
 [[apim.throttling.url_group]]
 traffic_manager_urls=[{% for url in url_group['traffic_manager_urls'] %}"{{ url }}"{%- if not loop.last -%},{% endif %}{% endfor %}]
 traffic_manager_auth_urls=[{% for url in url_group['traffic_manager_auth_urls'] %}"{{ url }}"{%- if not loop.last -%},{% endif %}{% endfor %}]
-
 {% endfor %}
 
 [apim.cache.scopes]
@@ -117,21 +120,6 @@ subscriptions=["POST_ADD_USER"]
 
 [database.local]
 url = "jdbc:h2:./repository/database/WSO2CARBON_DB;DB_CLOSE_ON_EXIT=FALSE"
-
-[apim.key_manager]
-service_url = "{{ key_manager_server_url }}"
-username= "$ref{super_admin.username}"
-password= "$ref{super_admin.password}"
-
-[apim.event_hub]
-#service_url = "{{ eventhub_service_url }}"
-event_listening_endpoints = [{% for endpoint in eventhub_decision_endpoints %}"{{ endpoint }}"{%- if not loop.last -%},{% endif %}{% endfor %}]
-
-{% for url_group in eventhub_url_group %}
-[[apim.event_hub.publish.url_group]]
-urls=[{% for url in url_group['urls'] %}"{{ url }}"{%- if not loop.last -%},{% endif %}{% endfor %}]
-auth_urls=[{% for url in url_group['auth_urls'] %}"{{ url }}"{%- if not loop.last -%},{% endif %}{% endfor %}]
-{% endfor %}
 
 [apim.sync_runtime_artifacts.publisher]
 artifact_saver = "DBSaver"
