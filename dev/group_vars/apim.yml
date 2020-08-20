@@ -75,11 +75,9 @@ deployment_mode: single # Single or HA
 
 # Enable analytics for API Manager
 analytics_enabled: true
-stream_processor_username: ${admin.username}
-stream_processor_password: ${admin.password}
+analytics_username: ${admin.username}
+analytics_password: ${admin.password}
 stream_processor_rest_api_url: https://analyticslb.apimha.com
-stream_processor_rest_api_username: ${admin.username}
-stream_processor_rest_api_password: ${admin.password}
 analytics_url_group:
   - analytics_urls:
       - tcp://analytics1.apimha.com:7612

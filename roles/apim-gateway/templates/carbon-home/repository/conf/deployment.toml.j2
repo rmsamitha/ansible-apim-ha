@@ -62,11 +62,9 @@ traffic_manager_auth_urls=[{% for url in url_group['traffic_manager_auth_urls'] 
 
 [apim.analytics]
 enable = "{{ analytics_enabled }}"
-username= "$ref{super_admin.username}"
-password= "$ref{super_admin.password}"
+username = "{{ analytics_username }}"
+password = "{{ analytics_password }}"
 store_api_url = "{{ stream_processor_rest_api_url }}"
-store_api_username = "{{ stream_processor_rest_api_username }}"
-store_api_password = "{{ stream_processor_rest_api_password }}"
 
 {% for url_group in analytics_url_group %}
 [[apim.analytics.url_group]]
